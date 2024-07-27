@@ -1,0 +1,16 @@
+.moviesPage {
+    padding: 40px;
+}
+
+.moviesPage form {
+    margin: 0 auto;
+    width: 300px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.moviesPage form input {
+    height: 24px;
+    width: 200px;
+}
