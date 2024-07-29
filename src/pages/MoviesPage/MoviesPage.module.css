@@ -14,3 +14,15 @@
     height: 24px;
     width: 200px;
 }
+
+@media (prefers-color-scheme: light) {
+    .moviesPage form button {
+        background-color: #646cff;
+        color: aliceblue;
+    }
+    
+    .moviesPage form button:hover,
+    .moviesPage form button:focus {
+        background-color: #535bf2;
+    }
+}

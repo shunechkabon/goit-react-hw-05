@@ -9,6 +9,7 @@ const MoviesPage = () => {
     const [movies, setMovies] = useState([]);
     const location = useLocation();
     const navigate = useNavigate();
+    const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
@@ -24,7 +25,7 @@ const MoviesPage = () => {
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}`, {
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNWIwNDY4MGI3ODk5MGE0ZGU1NmEzZTYxZGFmMDIwNyIsIm5iZiI6MTcyMjExNzQzMy41NTg5MDEsInN1YiI6IjY2YTU2YmUyZDFmMGI5MTdkNjYwMDkyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BF6ClvONJvihNKySStftL3QBXuEJPbY4fbdGdTlhPyU'
+                    Authorization: `Bearer ${API_KEY}`
                 }
             });
             setMovies(response.data.results);
@@ -40,27 +41,6 @@ const MoviesPage = () => {
             fetchMovies(query);
         }
     };
-    
-    // const [query, setQuery] = useState(localStorage.getItem('query') || '');
-    // const [movies, setMovies] = useState([]);
-
-    // const handleSearch = async (e) => {
-    //     e.preventDefault(); 
-    //     if (!query.trim()) return;
-
-    //     localStorage.setItem('query', query);
-
-    //     try {
-    //         const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}`, {
-    //             headers: {
-    //                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNWIwNDY4MGI3ODk5MGE0ZGU1NmEzZTYxZGFmMDIwNyIsIm5iZiI6MTcyMjExNzQzMy41NTg5MDEsInN1YiI6IjY2YTU2YmUyZDFmMGI5MTdkNjYwMDkyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BF6ClvONJvihNKySStftL3QBXuEJPbY4fbdGdTlhPyU' 
-    //             }
-    //         });
-    //         setMovies(response.data.results);
-    //     } catch (error) {
-    //         console.error('Error fetching movies:', error);
-    //     }
-    // };
 
     return (
         <div className={s.moviesPage}>

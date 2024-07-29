@@ -10,13 +10,15 @@ const MovieDetailsPage = () => {
     const navigate = useNavigate();
 
     const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+    const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+    const defaultImg = 'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg';
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
                 const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNWIwNDY4MGI3ODk5MGE0ZGU1NmEzZTYxZGFmMDIwNyIsIm5iZiI6MTcyMjExNzQzMy41NTg5MDEsInN1YiI6IjY2YTU2YmUyZDFmMGI5MTdkNjYwMDkyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BF6ClvONJvihNKySStftL3QBXuEJPbY4fbdGdTlhPyU'
+                        Authorization: `Bearer ${API_KEY}`
                     }
                 });
                 setMovie(response.data);
@@ -28,8 +30,8 @@ const MovieDetailsPage = () => {
     }, [movieId]);
 
     const goBack = () => {
-        const backLocation = location.state?.from;
-        navigate(`${backLocation.pathname}${backLocation.search}`);
+        const backLocation = location.state?.from ?? '/';
+        navigate(backLocation); // Повертаємось на попередню сторінку
     };
 
     if (!movie) {
@@ -44,7 +46,7 @@ const MovieDetailsPage = () => {
         <div className={s.movieDetailsPage}>
             <button onClick={goBack}>Go back</button>
             <div className={s.movieDetails}>
-                <img src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} />
+                <img src={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : defaultImg} width={250} alt={movie.title} />
                 <div>
                     <h1>{movie.title} ({releaseYear})</h1>
                     <p>User Score: {userScore}%</p>
@@ -56,8 +58,8 @@ const MovieDetailsPage = () => {
             </div>
             <h2>Additional information</h2>
             <div className={s.addInfo}>
-                <Link to="cast">Cast</Link>
-                <Link to="reviews">Reviews</Link>
+                <Link to="cast" state={{ from: location.state?.from }}>Cast</Link>
+                <Link to="reviews" state={{ from: location.state?.from }}>Reviews</Link>
             </div>
             <Outlet />
         </div>

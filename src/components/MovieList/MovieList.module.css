@@ -12,3 +12,10 @@
 .movieList li a:focus {
     border-bottom: 0.5px solid white;
 }
+
+@media (prefers-color-scheme: light) {
+    .movieList li a:hover,
+    .movieList li a:focus {
+        border-bottom: 0.5px solid rgb(27, 27, 27);
+    }
+}

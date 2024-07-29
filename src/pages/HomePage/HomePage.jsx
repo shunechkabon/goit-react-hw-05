@@ -4,12 +4,14 @@ import MovieList from '../../components/MovieList/MovieList';
 
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
+    const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
 
     useEffect(() => {
         const fetchTrendingMovies = async () => {
             const response = await axios.get('https://api.themoviedb.org/3/trending/movie/day', {
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNWIwNDY4MGI3ODk5MGE0ZGU1NmEzZTYxZGFmMDIwNyIsIm5iZiI6MTcyMjExNzQzMy41NTg5MDEsInN1YiI6IjY2YTU2YmUyZDFmMGI5MTdkNjYwMDkyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BF6ClvONJvihNKySStftL3QBXuEJPbY4fbdGdTlhPyU'
+                    Authorization: `Bearer ${API_KEY}`
                 }
             });
             setMovies(response.data.results);

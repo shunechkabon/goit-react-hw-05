@@ -21,3 +21,11 @@
 .nav a:active {
     box-shadow: 0 0 8px rgb(255, 255, 255);
 }
+
+@media (prefers-color-scheme: light) {
+    .nav a:hover,
+    .nav a:focus,
+    .nav a:active {
+        box-shadow: 0 0 8px rgb(37, 37, 37);
+    }
+}

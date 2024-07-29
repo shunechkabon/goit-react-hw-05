@@ -6,13 +6,15 @@ import s from './MovieCast.module.css';
 const MovieCast = () => {
     const { movieId } = useParams();
     const [cast, setCast] = useState([]);
+
     const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w200';
+    const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
     useEffect(() => {
         const fetchCast = async () => {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits`, {
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNWIwNDY4MGI3ODk5MGE0ZGU1NmEzZTYxZGFmMDIwNyIsIm5iZiI6MTcyMjExNzQzMy41NTg5MDEsInN1YiI6IjY2YTU2YmUyZDFmMGI5MTdkNjYwMDkyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BF6ClvONJvihNKySStftL3QBXuEJPbY4fbdGdTlhPyU'
+                    Authorization: `Bearer ${API_KEY}`
                 }
             });
             setCast(response.data.cast);
