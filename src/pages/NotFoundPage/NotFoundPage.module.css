@@ -1,0 +1,17 @@
+.notFound {
+    padding-left: 40px;
+}
+
+.notFound a {
+    border-radius: 10px;
+    height: 28px;
+    width: 70px;
+    display: block;
+    padding: 5px 10px;
+    transition: box-shadow 0.5s ease;
+}
+
+.notFound a:hover,
+.notFound a:focus {
+    box-shadow: 0 0 8px rgb(255, 255, 255);
+}

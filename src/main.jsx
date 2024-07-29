@@ -7,6 +7,8 @@ import './index.css';
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage.jsx'));
 const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage/MovieDetailsPage.jsx'));
+const MovieCast = lazy(() => import('./components/MovieCast/MovieCast'));
+const MovieReviews = lazy(() => import('./components/MovieReviews/MovieReviews'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -18,8 +20,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route index element={<HomePage />} />
             <Route path="movies" element={<MoviesPage />} />
             <Route path="movies/:movieId" element={<MovieDetailsPage />}>
-              {/* <Route path="cast" element={<MovieCast />} />
-              <Route path="reviews" element={<MovieReviews />} /> */}
+              <Route path="cast" element={<MovieCast />} />
+              <Route path="reviews" element={<MovieReviews />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>

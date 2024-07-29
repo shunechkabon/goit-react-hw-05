@@ -1,0 +1,9 @@
+.castItem {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.castImage {
+    height: 150px;
+}

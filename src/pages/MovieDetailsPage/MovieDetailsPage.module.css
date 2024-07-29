@@ -1,0 +1,40 @@
+.movieDetailsPage {
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+.movieDetails {
+    display: flex;
+    gap: 30px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.movieDetails img {
+    height: 400px;
+    display: block;
+    margin-top: 30px;
+}
+
+.movieDetails div p {
+    margin-bottom: 30px;
+}
+
+.addInfo {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+.addInfo a {
+    border-radius: 10px;
+    height: 28px;
+    padding: 5px 10px;
+    transition: box-shadow 0.5s ease;
+}
+
+.addInfo a:hover,
+.addInfo a:focus {
+    box-shadow: 0 0 8px rgb(255, 255, 255);
+}
